@@ -1,0 +1,20 @@
+{
+  "name": "jinam",
+  "version": "1.0.0",
+  "description": "결정의 나침반 (Compass) - 개인 의사결정 상담 앱",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "engine",
+    "web"
+  ],
+  "scripts": {
+    "test": "npm run test --workspace=engine --workspace=web",
+    "build": "npm run build --workspace=engine --workspace=web",
+    "typecheck": "npm run typecheck --workspace=engine --workspace=web",
+    "dev": "npm run dev --workspace=web"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
