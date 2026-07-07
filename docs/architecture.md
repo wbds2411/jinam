@@ -105,7 +105,7 @@ flowchart TB
 
 export type TrustTier = 'verified' | 'conventional' | 'caution';
 export type Category = 'fate' | 'psychology' | 'health' | 'ritual';
-export type AdviceMode = 'panic' | 'withdrawn' | 'indecisive' | 'reinforce';
+export type AdviceMode = 'reinforce' | 'indecisive' | 'withdrawn' | 'panic' | 'crisis';
 
 export interface InputField {
   key: string;
@@ -346,6 +346,14 @@ export interface UserProfileData {
   mbti?: string;
   bloodType?: string;
   healthContexts?: string[];
+  // 검증된 심리 검사 점수(선별 도구, 진단 아님)
+  psychAssessment?: {
+    dcs?: { total: number; information: number; values: number; support: number; efficacy: number; date: string };
+    who5?: number;            // 0~100
+    gad7?: number;            // 0~21
+    phq9?: number;            // 0~27
+    lastUpdated: string;      // ISO date
+  };
 }
 
 export interface UserSettings {

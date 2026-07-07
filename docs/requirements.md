@@ -30,24 +30,24 @@
 
 ## 3. 미확정 사항 (\[CONFIRM\] 목록)
 
-> 다음 항목은 단계 1 종료 시 사람의 확정이 필요하다. 에이전트는 추측으로 기술 결정을 메우지 않는다.
+> 다음 항목 중 일부는 `architecture.md`와 `technical-application-guide.md`에서 구체화되었으나, 문서 전체의 일관성을 위해 최종 인간 승인이 필요한 항목은 `[PENDING]`으로 표시한다. 이미 확정된 항목은 `[RESOLVED]`로 표시하고 근거 문서를 링크한다.
 
 | ID | 항목 | 현재 상태 | 에이전트 제안 | 결정 필요 시점 |
 | --- | --- | --- | --- | --- |
-| CONF-01 | 백엔드 언어/프레임워크 | Node/TS vs Python/FastAPI 미정 | **Node.js + TypeScript(Express/Fastify/NestJS 중 선택) 모노레포** 권장. 이유: 풀스택 TS 타입 공유, Vite/PWA/Capacitor 생태계 일치, LLM 클라이언트 풍부, 개인서버 배포 간단. 복잡한 천문 계산은 검증된 JS/TS 라이브러리 또는 외부 마이크로서비스로 분리 가능. | 단계 2 전 |
-| CONF-02 | 모바일 크로스 전략 | Capacitor vs React Native 미정 | **Capacitor** 권장. 이유: 동일 웹 코드베이스 유지, PWA와 빌드 파이프라인 공유, 개인서버→공개 모바일 전환 시 마찰 최소. | 단계 2 전 |
-| CONF-03 | 로컬 LLM 기본 모델 | Qwen/DeepSeek/Gemma 중 확정 안 됨 | **Qwen2.5(7B/14B) 또는 Gemma 3** 권장. 이유: 한국어 성능·라이선스·Ollama 지원 모두 우수. DeepSeek도 후보이나 추론 모델은 비용/지연 고려. | 단계 2 전 |
-| CONF-04 | 클라우드 LLM 기본 제공자 | Claude/GPT 중 확정 안 됨 | 초기에는 **사용자 API 키 직접 입력**만 지원하고, 향후 OAuth 연동은 후순위. 이유: 개인서버 비공개 배포 특성상 비용/키 관리 부담 최소화. | 단계 2 전 |
-| CONF-05 | 계산 엔진 전략 | 자체 구현 vs 라이브러리 의존 | **양력↔음력 변환은 검증된 라이브러리 + 만세력/사주 핵심은 자체 구현 + 골든 테스트 고정** 권장. 이유: "할루시네이션 금지", 절기/자시/지역시 보정 등 도메인 세부 규칙을 직접 통제해야 함. | 단계 3 전 |
-| CONF-06 | 클라이언트 저장소 암호화 | WebCrypto vs SQLCipher vs 기타 | **브라우저: WebCrypto API + IndexedDB**, 서버/모바일: 각 플랫폼 안전 저장소(Keychain/KeyStore) 권장. 이유: 표준 웹 API, 추가 의존성 최소, PWA/모바일 모두 커버. | 단계 2 전 |
-| CONF-07 | 인증 제공자 | OAuth(Google/GitHub/카카오/애플?) 또는 로컬 계정 우선 | **1단계는 로컬 계정(PIN/비밀번호) + API 키 직접 입력**만, **2단계 공개 모바일에서 OAuth(구글/애플)** 추가 권장. 이유: 개인서버는 외부 의존 최소화. | 단계 2 전 |
-| CONF-08 | 출생 시각 모름 처리 | 시주 없는 3주 모드 vs 추정 보조 | **시각 모름 시 시주 제외하고 3주(년월일) 기반 해석 + "시각 입력 시 더 정확해집니다" 안내** 권장. 추정 보조는 2단계 후속. | 단계 3 전 |
-| CONF-09 | 띠 기준 | 입춘 vs 음력설 | **설정에서 둘 다 지원, 기본값 입춘** 권장. 이유: 전통 명리학은 입춘을 시점으로 하나, 대중적 이해는 음력설이 강함. | 단계 3 전 |
-| CONF-10 | 토정비결 144괘 알고리즘 | 구체 출처/라이선스 확인 필요 | domain-sources.md에 후보 소스 수록. 상용/저작권 제한이 있는 경우 사용자 입력 기반 인덱스 산출만 하고 해석은 자체 작성. | 단계 1\~3 |
-| CONF-11 | 위기 핫라인 기본 지역 | 한국 외 다국적 지원 범위 | **1단계 한국(109, 1577-0199)만**, **2단계에서 ISO 국가코드 기반 테이블 확장** 권장. | 단계 4 전 |
-| CONF-12 | 의료/한의학 정보 출처 | 증상·체질 관련 데이터베이스 선정 | domain-sources.md에 임상 가이드라인/공식 기관 출처 수록. 자세한 것은 단계 1에서 조사 후 제안. | 단계 1 |
-| CONF-13 | 배포 환경 세부 | 개인서버 OS/도커/리버스프록시 | **Docker Compose + Caddy(자동 HTTPS) 또는 Nginx** 권장. 이유: 개인서버에서 손쉬운 TLS/리버스프록시. | 단계 7 전 |
-| CONF-14 | 테스트 커버리지 기준 | 계산/안전/E2E 커버리지 수치 | **계산 엔진 90% 이상, 안전 시나리오 100%, 핵심 사용자 플로우 E2E** 권장. | 단계 7 전 |
+| CONF-01 | 백엔드 언어/프레임워크 | **[RESOLVED]** Node.js + TypeScript + Fastify 확정 ([architecture.md 2.2](architecture.md)) | 풀스택 TS 타입 공유, Vite/PWA/Capacitor 생태계 일치, LLM 클라이언트 풍부, 개인서버 배포 간단. | 확정 |
+| CONF-02 | 모바일 크로스 전략 | **[RESOLVED]** Capacitor 확정 ([architecture.md 2.2](architecture.md)) | 동일 웹 코드베이스 유지, PWA와 빌드 파이프라인 공유, 개인서버→공개 모바일 전환 시 마찰 최소. | 확정 |
+| CONF-03 | 로컬 LLM 기본 모델 | **[PENDING]** Qwen2.5(7B/14B) 또는 Gemma 3 후보 | 한국어 성능·라이선스·Ollama 지원 우수. DeepSeek도 후보이나 추론 모델은 비용/지연 고려. | 단계 2 전 |
+| CONF-04 | 클라우드 LLM 기본 제공자 | **[PENDING]** 1단계는 사용자 API 키 직접 입력, OAuth(Claude/GPT 등)는 2단계 후순위 | 개인서버 비공개 배포 특성상 비용/키 관리 부담 최소화. | 단계 2 전 |
+| CONF-05 | 계산 엔진 전략 | **[RESOLVED]** 양력↔음력 변환은 `kor-lunar` + 만세력/사주 핵심은 자체 구현 + 골든 테스트 ([technical-application-guide.md 7.1](technical-application-guide.md)) | 절기/자시/지역시 보정 등 도메인 세부 규칙을 직접 통제해야 함. | 확정 |
+| CONF-06 | 클라이언트 저장소 암호화 | **[RESOLVED]** 브라우저: WebCrypto API + IndexedDB, 서버/모바일: Keychain/KeyStore ([architecture.md 2.2](architecture.md)) | 표준 웹 API, 추가 의존성 최소, PWA/모바일 모두 커버. | 확정 |
+| CONF-07 | 인증 제공자 | **[RESOLVED]** 1단계 로컬 계정(PIN/비밀번호) + API 키 직접 입력, 2단계 OAuth(구글/애플) ([architecture.md 2.2](architecture.md)) | 개인서버는 외부 의존 최소화. | 확정 |
+| CONF-08 | 출생 시각 모름 처리 | **[RESOLVED]** 시각 모름 시 시주 제외하고 3주(년월일) 기반 해석 ([technical-application-guide.md 8.2](technical-application-guide.md)) | 추정 보조는 2단계 후속. | 확정 |
+| CONF-09 | 띠 기준 | **[RESOLVED]** 설정에서 입춘/음력설 둘 다 지원, 기본값 입춘 ([technical-application-guide.md 7.3](technical-application-guide.md)) | 전통 명리학은 입춘을 시점으로 하나, 대중적 이해는 음력설이 강함. | 확정 |
+| CONF-10 | 토정비결 144괘 알고리즘 | **[PENDING]** 인덱스 산출은 자체 구현, 해설은 자체 작성 원칙 확정. 구체 144괘 인덱스 공식 출처 추가 검토 필요 ([technical-application-guide.md 7.2](technical-application-guide.md)) | 상용/저작권 제한이 있는 경우 인덱스 산출만 하고 해설은 자체 작성. | 단계 1\~3 |
+| CONF-11 | 위기 핫라인 기본 지역 | **[RESOLVED]** 1단계 한국(1393, 1577-0199, 129, 119), 2단계 ISO 국가코드 기반 테이블 확장 ([technical-application-guide.md 9.3](technical-application-guide.md)) | 자살·의료·폭력 위기에 따른 번호/기관 구분은 위기 자원 표로 정리. | 확정 |
+| CONF-12 | 의료/한의학 정보 출처 | **[RESOLVED]** 1단계는 KIOM/QSCC II 기반 사상체질 간이 설문 + 사주 오행 매핑, 처방/진단 금지 ([technical-application-guide.md 6](technical-application-guide.md)) | 심리 검사(GAD-7/PHQ-9/WHO-5)와 연계하여 건강 경계 가드 강화. | 확정 |
+| CONF-13 | 배포 환경 세부 | **[RESOLVED]** Docker Compose + Caddy(자동 HTTPS) ([architecture.md 2.2](architecture.md)) | 개인서버에서 손쉬운 TLS/리버스프록시. | 확정 |
+| CONF-14 | 테스트 커버리지 기준 | **[RESOLVED]** 계산 엔진 90% 이상, 안전 시나리오 100%, 핵심 사용자 플로우 E2E ([architecture.md 2.2](architecture.md)) | 안전 시나리오는 자해/의료/단정 표현 필터를 포함. | 확정 |
 
 ## 4. 단계별 완료 기준(DoD) 요약
 

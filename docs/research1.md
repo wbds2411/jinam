@@ -1,4 +1,4 @@
-﻿# 결정 거울 앱: research1 - 자료 검증 및 보완본
+﻿# 결정의 나침반: research1 - 자료 검증 및 보완본
 
 > 본 문서는 동서양 운세·전통 지혜와 검증된 의사결정 과학을 결합하여, 지친 사용자에게 "오늘의 한 걸음"을 제안하는 개인 의사결정 상담 앱의 연근거 자료입니다.  
 > 운세는 예언이 아닌 자기성찰의 거울로, 심리학과 행동과학이 실제 행동으로 연결되는 구조를 지향합니다.
@@ -35,9 +35,9 @@
 | **C/D등급** | 풍수, 공간 배치, 환경 정리                                              |  과학적 예측력은 약함 | 환경심리학·공간 리셋으로 재해석         |
 | **D등급**   | 토정비결, 사주, 점성술, 타로, 주역점, Ifá, 오미쿠지 등                           |    예측 검증은 약함 | 문화적 거울, 질문 생성, 자기성찰 도구    |
 
-의료 분야에서 쓰이는 **환자 의사결정 보조도구**는 지식 증가, 위험 인식, 가치에 맞는 선택, 의사결정 참여를 돕는 근거가 있습니다. Cochrane의 2024년 리뷰도 200개 이상의 연구를 바탕으로 의사결정 보조도구가 사람들이 더 잘 알고, 더 가치에 맞게 선택하도록 돕는다고 정리합니다. ([Cochrane][14])
+의료 분야에서 쓰이는 **환자 의사결정 보조도구**는 지식 증가, 위험 인식, 가치에 맞는 선택, 의사결정 참여를 돕는 근거가 있습니다. Cochrane의 2024년 리뷰도 200개 이상의 연구를 바탕으로 의사결정 보조도구가 사람들이 더 잘 알고, 더 가치에 맞게 선택하도록 돕는다고 정리합니다. ([Cochrane][1])
 
-또한 **Decisional Conflict Scale**은 선택의 불확실성, 정보 부족, 가치 불명확성, 지지 부족 등을 측정하는 도구입니다. 이건 당신 앱에서 “왜 내가 결정을 못 하는가?”를 파악하는 핵심 척도로 쓸 수 있습니다. ([Patient Decision Aids][15])
+또한 **Decisional Conflict Scale**은 선택의 불확실성, 정보 부족, 가치 불명확성, 지지 부족 등을 측정하는 도구입니다. 이건 당신 앱에서 “왜 내가 결정을 못 하는가?”를 파악하는 핵심 척도로 쓸 수 있습니다. ([Patient Decision Aids][2])
 
 ---
 
@@ -49,7 +49,7 @@
 
 사용자가 피곤하고 불안하고 잠을 못 잔 상태라면, 운세보다 먼저 몸과 뇌 상태를 봐야 합니다.
 
-예를 들어 수면 부족은 의사결정, 문제해결, 감정 조절, 변화 대응에 어려움을 줄 수 있다고 NIH/NHLBI가 설명합니다. ([NHLBI, NIH][16])
+예를 들어 수면 부족은 의사결정, 문제해결, 감정 조절, 변화 대응에 어려움을 줄 수 있다고 NIH/NHLBI가 설명합니다. ([NHLBI, NIH][3])
 
 앱 질문 예시:
 
@@ -79,7 +79,7 @@
 
 사용자가 결정을 못 하는 가장 흔한 이유는 “정답을 몰라서”가 아니라, **다음 행동이 너무 크기 때문**입니다.
 
-여기서 **실행의도**가 중요합니다. 실행의도는 “만약 X 상황이 오면, 나는 Y 행동을 한다”는 식의 if-then 계획이고, 목표 의도를 실제 행동으로 옮기는 데 도움이 된다는 연구 기반이 있습니다. ([암관리연구소][17])
+여기서 **실행의도**가 중요합니다. 실행의도는 “만약 X 상황이 오면, 나는 Y 행동을 한다”는 식의 if-then 계획이고, 목표 의도를 실제 행동으로 옮기는 데 도움이 된다는 연구 기반이 있습니다. ([암관리연구소][4])
 
 앱 예시:
 
@@ -119,9 +119,9 @@
 | **타로**         | 감정·관계·무의식 탐색에 강함                        | 모호한 해석이 많고 의존성 위험          | 질문 카드, 저널링 카드로 사용                        |
 | **한의학/동양의학**   | 몸과 마음의 균형, 계절성, 생활 리듬 설명에 강함            | 앱이 진단·처방하면 위험              | 수면, 휴식, 온열, 호흡, 식사 리듬 등 일반 웰니스로 제한       |
 
-토정비결은 한국민속대백과사전에서도 조선 중기 학자 토정 이지함과 연결되는 도참서로 설명되며, 태어난 연·월·일을 바탕으로 풀이하는 전통으로 소개됩니다. ([민속대백과사전][18])
+토정비결은 한국민속대백과사전에서도 조선 중기 학자 토정 이지함과 연결되는 도참서로 설명되며, 태어난 연·월·일을 바탕으로 풀이하는 전통으로 소개됩니다. ([민속대백과사전][5])
 
-반면 점성술은 과학적 성격 예측 도구로 보기 어렵습니다. Shawn Carlson의 *Nature* 논문은 출생 차트가 성격 특성을 정확히 설명할 수 있는지를 이중눈가림 방식으로 검토한 대표적 연구입니다. ([Nature][19]) Carlson 연구는 이후 점성술 옹호 측의 방법론 비판과 재분석(Ertel, 2009)도 있었으나, 주류 과학계에서는 여전히 출생 차트 기반 성격 예측의 근거로 보기 어렵다는 입장입니다. 또 사람들은 일반적이고 모호한 성격 설명도 자신에게 잘 맞는다고 느끼기 쉬운데, 이것이 Barnum/Forer 효과입니다. ([EBSCO][20])
+반면 점성술은 과학적 성격 예측 도구로 보기 어렵습니다. Shawn Carlson의 *Nature* 논문은 출생 차트가 성격 특성을 정확히 설명할 수 있는지를 이중눈가림 방식으로 검토한 대표적 연구입니다. ([Nature][6]) Carlson 연구는 이후 점성술 옹호 측의 방법론 비판과 재분석(Ertel, 2009)도 있었으나, 주류 과학계에서는 여전히 출생 차트 기반 성격 예측의 근거로 보기 어렵다는 입장입니다. 또 사람들은 일반적이고 모호한 성격 설명도 자신에게 잘 맞는다고 느끼기 쉬운데, 이것이 Barnum/Forer 효과입니다. ([EBSCO][7])
 
 ---
 
@@ -146,7 +146,7 @@
 | 유럽 민속     | 룬, 지오맨시, 꿈해몽          |
 | 중동/고대권    | 점성술, 길흉일, 천문 기반 징조 해석 |
 
-UNESCO는 Ifá를 요루바 공동체와 아프리카 디아스포라에서 실천되는, 방대한 텍스트와 수학적 공식에 기반한 점술 체계로 소개합니다. ([UNESCO ICH][21])
+UNESCO는 Ifá를 요루바 공동체와 아프리카 디아스포라에서 실천되는, 방대한 텍스트와 수학적 공식에 기반한 점술 체계로 소개합니다. ([UNESCO ICH][8])
 
 이런 것들은 **문화적으로 검증된 전통**이라고 말할 수 있습니다.
 
@@ -185,7 +185,7 @@ UNESCO는 Ifá를 요루바 공동체와 아프리카 디아스포라에서 실�
 
 > “지금 결정력이 떨어진 이유가 정보 부족인가요, 피로인가요, 불안인가요, 죄책감인가요, 타인의 시선인가요?”
 
-여기에는 WHO-5, GAD-7, PHQ-9 같은 검증된 척도를 조심스럽게 넣을 수 있습니다. WHO-5는 최근 2주간의 정신적 웰빙을 보는 5문항 자기보고 도구이고, WHO가 공개 자료로 제공합니다. ([세계보건기구][22]) GAD-7은 불안 선별과 심각도 평가에 유효한 도구로 검증되었고, PHQ-9도 우울 심각도 측정에 신뢰도와 타당도가 있는 도구로 널리 쓰입니다. ([PubMed][23]) ([PubMed][24])
+여기에는 WHO-5, GAD-7, PHQ-9 같은 검증된 척도를 조심스럽게 넣을 수 있습니다. WHO-5는 최근 2주간의 정신적 웰빙을 보는 5문항 자기보고 도구이고, WHO가 공개 자료로 제공합니다. ([세계보건기구][9]) GAD-7은 불안 선별과 심각도 평가에 유효한 도구로 검증되었고, PHQ-9도 우울 심각도 측정에 신뢰도와 타당도가 있는 도구로 널리 쓰입니다. ([PubMed][10]) ([PubMed][11])
 
 > **안전 참고**: GAD-7과 PHQ-9은 **선별 도구(screening)**이며, 임상 진단을 대체할 수 없습니다. 점수가 높을 경우 반드시 정신건강 전문가나 의료기관 상담을 권장해야 하며, 앱은 진단·처방·치료를 암시하는 표현을 사용해서는 안 됩니다.
 >
@@ -249,7 +249,7 @@ UNESCO는 Ifá를 요루바 공동체와 아프리카 디아스포라에서 실�
 | “이 증상은 체질 때문입니다”      | “몸 상태가 결정에 영향을 줄 수 있으니, 수면·식사·통증·피로를 먼저 확인하세요.”         |
 | “병원보다 이 방법이 낫습니다”     | “증상이 지속되거나 심하면 전문가와 상담하세요.”                             |
 
-NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적이거나 부적절하게 시행될 경우 감염, 장기 손상 등 심각한 부작용이 가능하다고 안내합니다. 전통 중국의학과 약초 제품도 품질·안전성·상호작용 문제가 있을 수 있으므로 앱에서는 직접 처방하지 않는 것이 맞습니다. ([NCCIH][25])
+NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적이거나 부적절하게 시행될 경우 감염, 장기 손상 등 심각한 부작용이 가능하다고 안내합니다. 전통 중국의학과 약초 제품도 품질·안전성·상호작용 문제가 있을 수 있으므로 앱에서는 직접 처방하지 않는 것이 맞습니다. ([NCCIH][12])
 
 ---
 
@@ -270,7 +270,7 @@ NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적�
 | 재물운 방향         | 돈을 관리하는 물건과 앱을 잘 보이는 곳에 둔다 |
 | 침실 기운          | 수면 환경, 빛, 소음, 온도 조절        |
 
-최근 풍수와 환경심리학을 연결해 건축·공간 디자인과 웰빙 관점에서 검토하려는 연구들도 있지만, 이것을 “미래 예측”으로 쓰기보다는 공간의 쾌적성, 감정, 행동 유도성으로 재해석하는 것이 안전합니다. ([Asia Pacific Academy of Science][26])
+최근 풍수와 환경심리학을 연결해 건축·공간 디자인과 웰빙 관점에서 검토하려는 연구들도 있지만, 이것을 “미래 예측”으로 쓰기보다는 공간의 쾌적성, 감정, 행동 유도성으로 재해석하는 것이 안전합니다. ([Asia Pacific Academy of Science][13])
 
 ---
 
@@ -278,7 +278,7 @@ NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적�
 
 이 앱은 이렇게 정의하는 게 좋습니다.
 
-> **“운명을 맞히는 앱이 아니라, 내 상태를 비추고 오늘의 한 걸음을 정해주는 결정 거울.”**
+> **“운명을 맞히는 앱이 아니라, 내 상태를 비추고 오늘의 한 걸음을 정해주는 결정의 나침반.”**
 
 또는 더 짧게:
 
@@ -330,19 +330,19 @@ NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적�
 
 이 순서로 설계하면, 신뢰성과 감성 둘 다 잡을 수 있습니다.
 
-[14]: https://www.cochrane.org/evidence/CD001431_patient-decision-aids-help-people-who-are-facing-decisions-about-health-treatment-or-screening "Patient decision aids to help people who are facing ..."
-[15]: https://decisionaid.ohri.ca/eval_dcs.html "Decisional Conflict Scale - Evaluation Measures"
-[16]: https://www.nhlbi.nih.gov/health/sleep-deprivation/health-effects "How Sleep Affects Your Health | NHLBI, NIH"
-[17]: https://cancercontrol.cancer.gov/brp/research/constructs/implementation-intentions "Implementation Intentions"
-[18]: https://folkency.nfm.go.kr/kr/topic/detail/5167 "토정비결 - 한국민속대백과사전"
-[19]: https://www.nature.com/articles/318419a0 "A double-blind test of astrology"
-[20]: https://www.ebsco.com/research-starters/psychology/barnum-effect "Barnum effect | Psychology | Research Starters"
-[21]: https://ich.unesco.org/en/RL/ifa-divination-system-00146 "Ifa divination system"
-[22]: https://www.who.int/publications/m/item/WHO-UCN-MSD-MHE-2024.01 "The World Health Organization-Five Well-Being Index ..."
-[23]: https://pubmed.ncbi.nlm.nih.gov/16717171/ "A brief measure for assessing generalized anxiety disorder"
-[24]: https://pubmed.ncbi.nlm.nih.gov/11556941/ "The PHQ-9: validity of a brief depression severity measure"
-[25]: https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know "Traditional Chinese Medicine: What You Need To Know"
-[26]: https://ssd.apacsci.com/index.php/cd/article/viewFile/3036/3649 "Integrating Fengshui and environmental psychology into ..."
+[1]: https://www.cochrane.org/evidence/CD001431_patient-decision-aids-help-people-who-are-facing-decisions-about-health-treatment-or-screening "Patient decision aids to help people who are facing ..."
+[2]: https://decisionaid.ohri.ca/eval_dcs.html "Decisional Conflict Scale - Evaluation Measures"
+[3]: https://www.nhlbi.nih.gov/health/sleep-deprivation/health-effects "How Sleep Affects Your Health | NHLBI, NIH"
+[4]: https://cancercontrol.cancer.gov/brp/research/constructs/implementation-intentions "Implementation Intentions"
+[5]: https://folkency.nfm.go.kr/kr/topic/detail/5167 "토정비결 - 한국민속대백과사전"
+[6]: https://www.nature.com/articles/318419a0 "A double-blind test of astrology"
+[7]: https://www.ebsco.com/research-starters/psychology/barnum-effect "Barnum effect | Psychology | Research Starters"
+[8]: https://ich.unesco.org/en/RL/ifa-divination-system-00146 "Ifa divination system"
+[9]: https://www.who.int/publications/m/item/WHO-UCN-MSD-MHE-2024.01 "The World Health Organization-Five Well-Being Index ..."
+[10]: https://pubmed.ncbi.nlm.nih.gov/16717171/ "A brief measure for assessing generalized anxiety disorder"
+[11]: https://pubmed.ncbi.nlm.nih.gov/11556941/ "The PHQ-9: validity of a brief depression severity measure"
+[12]: https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know "Traditional Chinese Medicine: What You Need To Know"
+[13]: https://ssd.apacsci.com/index.php/cd/article/viewFile/3036/3649 "Integrating Fengshui and environmental psychology into ..."
 
 
 
@@ -367,9 +367,9 @@ NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적�
 | **과학적 검증**     | 미래 예측력이나 효과가 실험적으로 확인됨       | 대부분의 운세 체계는 약함             |         |
 | **심리적 유용성 검증** | 자기성찰, 감정 정리, 행동 시작에 도움       | 타로 저널링, 주역 질문, 사주 기반 성향 반성 |         |
 
-예를 들어 **토정비결**은 한국민속대백과사전에서 조선 중기 학자 토정 이지함과 연결되는 도참서로 설명되고, 태어난 연·월·일을 바탕으로 육십갑자를 이용해 풀이하는 전통으로 소개됩니다. 이것은 “한국 문화 안에서 역사적으로 전승된 해석 체계”라는 뜻이지, “미래 예측이 과학적으로 입증되었다”는 뜻은 아닙니다. ([민속대백과사전][1])
+예를 들어 **토정비결**은 한국민속대백과사전에서 조선 중기 학자 토정 이지함과 연결되는 도참서로 설명되고, 태어난 연·월·일을 바탕으로 육십갑자를 이용해 풀이하는 전통으로 소개됩니다. 이것은 “한국 문화 안에서 역사적으로 전승된 해석 체계”라는 뜻이지, “미래 예측이 과학적으로 입증되었다”는 뜻은 아닙니다. ([민속대백과사전][14])
 
-또 **Ifá**는 요루바 공동체와 아프리카 디아스포라에서 실천되는 점술 체계로, UNESCO가 광범위한 텍스트와 수학적 공식을 사용하는 전승으로 소개합니다. 이것도 글로벌 SaaS에서 매우 중요한 문화적 자산이 될 수 있지만, 역시 과학적 예언 엔진으로 취급해서는 안 됩니다. ([UNESCO ICH][2])
+또 **Ifá**는 요루바 공동체와 아프리카 디아스포라에서 실천되는 점술 체계로, UNESCO가 광범위한 텍스트와 수학적 공식을 사용하는 전승으로 소개합니다. 이것도 글로벌 SaaS에서 매우 중요한 문화적 자산이 될 수 있지만, 역시 과학적 예언 엔진으로 취급해서는 안 됩니다. ([UNESCO ICH][15])
 
 따라서 당신 앱에서는 이렇게 정의하는 것이 좋습니다.
 
@@ -409,14 +409,14 @@ NCCIH는 침 치료가 일부 상황에서 연구되어 왔지만, 비위생적�
 
 검증된 심리학, 의사결정 과학, 행동과학, 상태 점검입니다.
 
-여기에는 Decisional Conflict Scale처럼 선택의 불확실성, 정보 부족, 가치 불명확성, 지지 부족을 측정하는 도구가 들어갈 수 있습니다. ([Patient Decision Aids][3])
-또 WHO-5처럼 최근 2주간의 정신적 웰빙을 짧게 확인하는 국제적 자기보고 척도도 글로벌 SaaS에 적합합니다. WHO-5는 5문항으로 구성되어 있고 30개 이상 언어로 번역되어 있습니다. ([세계보건기구][4])
+여기에는 Decisional Conflict Scale처럼 선택의 불확실성, 정보 부족, 가치 불명확성, 지지 부족을 측정하는 도구가 들어갈 수 있습니다. ([Patient Decision Aids][16])
+또 WHO-5처럼 최근 2주간의 정신적 웰빙을 짧게 확인하는 국제적 자기보고 척도도 글로벌 SaaS에 적합합니다. WHO-5는 5문항으로 구성되어 있고 30개 이상 언어로 번역되어 있습니다. ([세계보건기구][17])
 
 ## 2축: State Engine
 
 수면, 피로, 불안, 스트레스, 신체 에너지, 감정 상태를 봅니다.
 
-WHO는 규칙적인 신체활동이 신체 건강뿐 아니라 우울·불안 증상 감소, 뇌 건강, 전반적 웰빙에 도움이 된다고 정리합니다. ([세계보건기구][5])
+WHO는 규칙적인 신체활동이 신체 건강뿐 아니라 우울·불안 증상 감소, 뇌 건강, 전반적 웰빙에 도움이 된다고 정리합니다. ([세계보건기구][18])
 그러므로 앱이 “지금 운이 안 좋다”라고 말하기 전에 먼저 “지금 너무 지친 상태라 판단 품질이 떨어진다”라고 말할 수 있어야 합니다.
 
 ## 3축: Cultural Mirror Engine
@@ -434,7 +434,7 @@ WHO는 규칙적인 신체활동이 신체 건강뿐 아니라 우울·불안 �
 
 마지막에는 무조건 행동으로 바뀌어야 합니다.
 
-예를 들어 실행의도, 즉 “만약 X 상황이 오면 나는 Y를 한다”는 if-then 계획은 목표를 실제 행동으로 옮기는 데 활용되는 대표적인 행동과학 기법입니다. Gollwitzer와 Sheeran의 구현의도 연구는 목표 달성 관련 메타분석으로도 잘 알려져 있습니다. ([암관리연구소][6])
+예를 들어 실행의도, 즉 “만약 X 상황이 오면 나는 Y를 한다”는 if-then 계획은 목표를 실제 행동으로 옮기는 데 활용되는 대표적인 행동과학 기법입니다. Gollwitzer와 Sheeran의 구현의도 연구는 목표 달성 관련 메타분석으로도 잘 알려져 있습니다. ([암관리연구소][19])
 
 앱의 결과물은 이런 형태여야 합니다.
 
@@ -489,7 +489,7 @@ WHO는 규칙적인 신체활동이 신체 건강뿐 아니라 우울·불안 �
 | **달력/절기 기반 판단**    | 24절기, 길일/택일, 농경 달력  | 계절성, 리듬, 타이밍, 회복 주기        |
 | **몸/기질 기반 균형**     | 한의학, 아유르베다, TCM     | 몸 상태, 피로, 리듬, 회복 관점 제공     |
 
-중국의 24절기는 태양의 연간 운동 관찰을 통해 형성된 시간 지식과 사회적 실천으로 UNESCO 무형문화유산에 등재되어 있습니다. 이런 체계는 “미래 예언”보다 “계절성·생활 리듬·타이밍 감각”으로 앱에 적용하기 좋습니다. ([UNESCO ICH][7])
+중국의 24절기는 태양의 연간 운동 관찰을 통해 형성된 시간 지식과 사회적 실천으로 UNESCO 무형문화유산에 등재되어 있습니다. 이런 체계는 “미래 예언”보다 “계절성·생활 리듬·타이밍 감각”으로 앱에 적용하기 좋습니다. ([UNESCO ICH][20])
 
 ---
 
@@ -564,8 +564,8 @@ WHO는 규칙적인 신체활동이 신체 건강뿐 아니라 우울·불안 �
 여기서 중요한 것은 “운세를 낮게 본다”가 아닙니다.
 역할이 다르다는 것입니다.
 
-점성술의 경우, 출생 차트가 성격 특성을 정확히 설명할 수 있는지를 검토한 Shawn Carlson의 이중눈가림 연구가 *Nature*에 실린 바 있습니다. 이런 연구들은 점성술을 과학적 성격 예측 도구로 쓰는 데 한계가 있음을 보여주는 근거로 자주 언급됩니다. ([Nature][8])
-또 사람들은 모호하고 일반적인 설명도 자신에게 특별히 맞는 것처럼 받아들이는 경향이 있는데, 이것이 Barnum/Forer 효과입니다. 운세형 콘텐츠는 이 효과를 악용하지 않도록 설계해야 합니다. ([EBSCO][9])
+점성술의 경우, 출생 차트가 성격 특성을 정확히 설명할 수 있는지를 검토한 Shawn Carlson의 이중눈가림 연구가 *Nature*에 실린 바 있습니다. 이런 연구들은 점성술을 과학적 성격 예측 도구로 쓰는 데 한계가 있음을 보여주는 근거로 자주 언급됩니다. ([Nature][21])
+또 사람들은 모호하고 일반적인 설명도 자신에게 특별히 맞는 것처럼 받아들이는 경향이 있는데, 이것이 Barnum/Forer 효과입니다. 운세형 콘텐츠는 이 효과를 악용하지 않도록 설계해야 합니다. ([EBSCO][22])
 
 ---
 
@@ -662,13 +662,13 @@ WHO는 규칙적인 신체활동이 신체 건강뿐 아니라 우울·불안 �
 
 # 11. 글로벌 SaaS에서는 규제와 신뢰 설계도 처음부터 넣어야 합니다
 
-이 앱은 마음 상태, 신체 상태, 출생 정보, 문화/종교적 선호, 고민 내용을 다룰 수 있습니다. 유럽 GDPR의 특별범주 데이터에는 건강 데이터, 종교·철학적 신념 등 민감한 정보가 포함될 수 있으므로, 글로벌 서비스에서는 데이터 최소수집, 명시적 동의, 삭제권, 목적 제한이 매우 중요합니다. 건강·종교 데이터를 대규모로 처리할 경우 GDPR Article 35에 따른 **데이터 보호 영향 평가(DPIA)** 수행도 고려해야 합니다. ([GDPR][10])
+이 앱은 마음 상태, 신체 상태, 출생 정보, 문화/종교적 선호, 고민 내용을 다룰 수 있습니다. 유럽 GDPR의 특별범주 데이터에는 건강 데이터, 종교·철학적 신념 등 민감한 정보가 포함될 수 있으므로, 글로벌 서비스에서는 데이터 최소수집, 명시적 동의, 삭제권, 목적 제한이 매우 중요합니다. 건강·종교 데이터를 대규모로 처리할 경우 GDPR Article 35에 따른 **데이터 보호 영향 평가(DPIA)** 수행도 고려해야 합니다. ([GDPR][23])
 
-미국에서도 FTC는 HIPAA가 적용되지 않는 건강 앱과 유사 기술에도 건강정보 침해 통지 규칙이 적용될 수 있다고 안내합니다. 즉 “상담/웰니스 앱”이라도 건강·정신상태 데이터를 다루면 개인정보·보안 설계가 핵심 경쟁력이 됩니다. ([Federal Trade Commission][11])
+미국에서도 FTC는 HIPAA가 적용되지 않는 건강 앱과 유사 기술에도 건강정보 침해 통지 규칙이 적용될 수 있다고 안내합니다. 즉 “상담/웰니스 앱”이라도 건강·정신상태 데이터를 다루면 개인정보·보안 설계가 핵심 경쟁력이 됩니다. ([Federal Trade Commission][24])
 
-또 APA의 정신건강 앱 평가 모델은 앱의 배경, 접근성, 개인정보/보안, 임상적 근거, 사용성, 데이터 통합을 평가 축으로 제시하며, 특히 정신건강 앱은 임상적 효과 주장과 개인정보 위험을 신중히 다뤄야 한다고 설명합니다. ([American Psychiatric Association, APA App Evaluation Model][12])
+또 APA의 정신건강 앱 평가 모델은 앱의 배경, 접근성, 개인정보/보안, 임상적 근거, 사용성, 데이터 통합을 평가 축으로 제시하며, 특히 정신건강 앱은 임상적 효과 주장과 개인정보 위험을 신중히 다뤄야 한다고 설명합니다. ([American Psychiatric Association, APA App Evaluation Model][25])
 
-AI를 쓴다면 EU AI Act도 의식해야 합니다. EU AI Act(Regulation 2024/1689)는 2024년 8월 1일 발효되었으며, 금지 AI(2025.2), 일반목적 AI 모델(2025.8), 고위험 AI(2026.8/2027.8) 순으로 단계적으로 적용됩니다. 특히 사용자의 건강·정신 상태에 영향을 줄 수 있는 AI 기능은 투명성 의무 또는 고위험 분류 대상이 될 수 있으므로, 안전·기본권·인간 중심성 보장을 설계 단계부터 반영해야 합니다. ([European Commission - AI Act][13])
+AI를 쓴다면 EU AI Act도 의식해야 합니다. EU AI Act(Regulation 2024/1689)는 2024년 8월 1일 발효되었으며, 금지 AI(2025.2), 일반목적 AI 모델(2025.8), 고위험 AI(2026.8/2027.8) 순으로 단계적으로 적용됩니다. 특히 사용자의 건강·정신 상태에 영향을 줄 수 있는 AI 기능은 투명성 의무 또는 고위험 분류 대상이 될 수 있으므로, 안전·기본권·인간 중심성 보장을 설계 단계부터 반영해야 합니다. ([European Commission - AI Act][26])
 
 ---
 
@@ -708,27 +708,27 @@ AI를 쓴다면 EU AI Act도 의식해야 합니다. EU AI Act(Regulation 2024/1
 
 포지셔닝은 이렇게 잡는 것이 좋습니다.
 
-> **Global Decision Mirror**
+> **Global Decision Mirror (결정의 나침반)**
 > **전 세계의 문화적 지혜와 검증된 의사결정 과학을 결합해, 오늘의 한 걸음을 돕는 개인 상담 SaaS.**
 
 한국어 슬로건으로는:
 
 > **“운명을 맞히는 앱이 아니라, 나를 비추고 오늘을 움직이게 하는 앱.”**
 
-[1]: https://folkency.nfm.go.kr/kr/topic/detail/5167 "토정비결 - 한국민속대백과사전"
-[2]: https://ich.unesco.org/en/RL/ifa-divination-system-00146 "Ifa divination system"
-[3]: https://decisionaid.ohri.ca/eval_dcs.html "Decisional Conflict Scale - Evaluation Measures - Patient Decision Aids - Ottawa Hospital Research Institute"
-[4]: https://www.who.int/publications/m/item/WHO-UCN-MSD-MHE-2024.01 "
+[14]: https://folkency.nfm.go.kr/kr/topic/detail/5167 "토정비결 - 한국민속대백과사전"
+[15]: https://ich.unesco.org/en/RL/ifa-divination-system-00146 "Ifa divination system"
+[16]: https://decisionaid.ohri.ca/eval_dcs.html "Decisional Conflict Scale - Evaluation Measures - Patient Decision Aids - Ottawa Hospital Research Institute"
+[17]: https://www.who.int/publications/m/item/WHO-UCN-MSD-MHE-2024.01 "
 	The World Health Organization-Five Well-Being Index (WHO-5)
 "
-[5]: https://www.who.int/news-room/fact-sheets/detail/physical-activity "
+[18]: https://www.who.int/news-room/fact-sheets/detail/physical-activity "
 	Physical activity
 "
-[6]: https://cancercontrol.cancer.gov/sites/default/files/2020-06/goal_intent_attain.pdf "Microsoft Word - goal_intent_attain.doc"
-[7]: https://ich.unesco.org/en/RL/the-twenty-four-solar-terms-knowledge-in-china-of-time-and-practices-developed-through-observation-of-the-sun-s-annual-motion-00647 "The Twenty-Four Solar Terms, knowledge in China of time ..."
-[8]: https://www.nature.com/articles/318419a0 "A double-blind test of astrology | Nature"
-[9]: https://www.ebsco.com/research-starters/psychology/barnum-effect "Barnum effect | Psychology | Research Starters | EBSCO Research"
-[10]: https://gdpr-info.eu/art-9-gdpr/ "Art. 9 GDPR – Processing of special categories of personal data - General Data Protection Regulation (GDPR)"
-[11]: https://www.ftc.gov/business-guidance/blog/2024/04/updated-ftc-health-breach-notification-rule-puts-new-provisions-place-protect-users-health-apps "Updated FTC Health Breach Notification Rule puts new provisions in place to protect users of health apps and devices | Federal Trade Commission"
-[12]: https://www.psychiatry.org/psychiatrists/practice/mental-health-apps/the-app-evaluation-model "APA App Evaluation Model"
-[13]: https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai "AI Act | Shaping Europe's digital future"
+[19]: https://cancercontrol.cancer.gov/sites/default/files/2020-06/goal_intent_attain.pdf "Microsoft Word - goal_intent_attain.doc"
+[20]: https://ich.unesco.org/en/RL/the-twenty-four-solar-terms-knowledge-in-china-of-time-and-practices-developed-through-observation-of-the-sun-s-annual-motion-00647 "The Twenty-Four Solar Terms, knowledge in China of time ..."
+[21]: https://www.nature.com/articles/318419a0 "A double-blind test of astrology | Nature"
+[22]: https://www.ebsco.com/research-starters/psychology/barnum-effect "Barnum effect | Psychology | Research Starters | EBSCO Research"
+[23]: https://gdpr-info.eu/art-9-gdpr/ "Art. 9 GDPR – Processing of special categories of personal data - General Data Protection Regulation (GDPR)"
+[24]: https://www.ftc.gov/business-guidance/blog/2024/04/updated-ftc-health-breach-notification-rule-puts-new-provisions-place-protect-users-health-apps "Updated FTC Health Breach Notification Rule puts new provisions in place to protect users of health apps and devices | Federal Trade Commission"
+[25]: https://www.psychiatry.org/psychiatrists/practice/mental-health-apps/the-app-evaluation-model "APA App Evaluation Model"
+[26]: https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai "AI Act | Shaping Europe's digital future"

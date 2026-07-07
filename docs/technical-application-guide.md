@@ -30,9 +30,11 @@
 | 문서 | 역할 | 본 가이드와의 관계 |
 |------|------|-------------------|
 | `research1.md` | 학술/규제 근거 검증 | "왜 이 도구를 쓰는가" |
+| `research1-verification.md` | 출처 검증 상태 보고 | "어떤 근거가 검증되었는가" |
 | `domain-sources.md` | 도구별 신뢰 등급·라이브러리 후보 | "무엇을 쓸 것인가" |
 | `architecture.md` | 시스템 아키텍처·인터페이스 | "어떻게 연결하는가" |
 | `requirements.md` | 확정/미확정 요구사항 | "무엇을 만들어야 하는가" |
+| `risk-register.md` | 리스크 식별 및 완화 전략 | "무엇이 위험한가" |
 | **본 가이드** | 분야별 기술 적용 사양 | **"계산과 매핑의 구체적 방법"** |
 
 ### 1.2 핵심 원칙
@@ -78,7 +80,7 @@
 | 타임존 변환 | `IANA timezone` → UTC 오프셋 | `Intl.DateTimeFormat`, `date-fns-tz` | 사용자가 출생지 선택 |
 | 서머타임/일광절약시간 | 역사적 예외 테이블 | 자체 테이블 | 한국 1948~1988, 미국/유럽 역사적 규칙 |
 | 균시차(equation of time) | 태양의 평균시와 진태양시 차이(±16분) | `astronomia` 또는 근사식 | 고정밀 사주/점성학에 선택 적용 |
-| 경도 차이 | 본초 자오선(0°) 기준 1° = 4분 | 자체 계산 | 대구(약 128.6°E) → +514분 ≈ UTC+9와 거의 동일 |
+| 경도 차이 | 본초 자오선(0°) 기준 1° = 4분 | 자체 계산 | 대구(약 128.6°E) → +514.4분. 한국 표준시(UTC+9, 540분)와 약 26분 차이. 사주/점성학 계산에서 중요 |
 | 진태양시 | 평균태양시 + 균시차 | 자체 계산 | 절기/자시/점성학 house 계산에 사용 |
 
 **의사코드 예시:**
@@ -122,7 +124,7 @@ function toTrueSolarTime(local: Date, lng: number, timezone: string): Date {
 |------|------|---------|-----------|------|
 | `verified` | 공개 데이터·재현 가능한 계산·검증된 알고리즘 | "계산 기반" | 단정형 가능(단 의료·법률 단정 제외) | "수면 시간이 5시간 이하입니다." |
 | `conventional` | 전통/문화적 상징 체계 | "전통/상징적 관점" | 서술형·은유적 | "사주에서 목(木) 기운이 강하게 드러나는군요." |
-| `caution` | 과학적 근거 약함·개인차 큼·자기투사 | "참고용 관점" | 조걸문·주의 | "MBTI는 성향의 한 단면만 보여줄 수 있습니다." |
+| `caution` | 과학적 근거 약함·개인차 큼·자기투사 | "참고용 관점" | 조건문·주의 | "MBTI는 성향의 한 단면만 보여줄 수 있습니다." |
 
 #### 2.4.1 모든 출력에 공통으로 포함할 문구
 
@@ -219,7 +221,7 @@ function deriveAdviceMode(assessment: PsychologicalAssessment): AdviceMode {
   if (assessment.phq9 && assessment.phq9 >= 15) return 'crisis';
   if (assessment.gad7 && assessment.gad7 >= 10) return 'panic';
   if (assessment.who5 && assessment.who5 <= 50) return 'withdrawn';
-  if (assessment.dcs && assessment.dcs.total > 25) return 'indecisive';
+  if (assessment.dcs && assessment.dcs.total >= 25) return 'indecisive';
   return 'reinforce';
 }
 ```
@@ -293,7 +295,7 @@ function deriveAdviceMode(assessment: PsychologicalAssessment): AdviceMode {
 | 플랫폼 | 데이터 | 권한/주기 |
 |--------|--------|-----------|
 | Apple HealthKit | SleepAnalysis, HKCategoryValueSleepAnalysis | iOS 권한, 백그라운드 동기화 |
-| Google Health Connect | SleepSessionRecord, SleepStageRecord | Android 14+, 런타임 권한 |
+| Google Health Connect | SleepSessionRecord, SleepStageRecord | Android 9(API 28)+, 런타임 권한(Android 14+ 기기 내장) |
 | Fitbit Web API | Sleep logs, stages | OAuth, 일일 동기화 |
 
 Health Connect 수면 단계:
@@ -572,7 +574,7 @@ interface NatalInput {
 ### 8.4 행성 위치 계산
 
 - **태양/달**: `astronomia`의 태양/달 황경, 또는 VSOP87 + ELP2000-82B
-- **수성~토성(고전 7행성)**: VSOP87A/B/D 계열
+- **태양·달·수성·금성·화성·목성·토성(고전 7행성)**: VSOP87A/B/D 계열
 - **추천 라이브러리**:
   - `astronomia`(npm, MIT): 태양·달·주요 행성 경량 계산
   - `vsop87-multilang`(GitHub, MIT): 다양한 언어의 VSOP87 구현
@@ -664,8 +666,8 @@ type AdviceMode = 'reinforce' | 'indecisive' | 'withdrawn' | 'panic' | 'crisis';
 function determineAdviceMode(state: StateVector): AdviceMode {
   if (state.depression >= 15) return 'crisis';
   if (state.anxiety >= 10) return 'panic';
-  if (state.wellBeing <= 50 || state.sleepScore < 50) return 'withdrawn';
-  if (state.decisionConflict > 25) return 'indecisive';
+  if (state.wellBeing <= 50 || state.sleepScore < 40) return 'withdrawn';
+  if (state.decisionConflict >= 25) return 'indecisive';
   return 'reinforce';
 }
 ```
@@ -689,6 +691,20 @@ function determineAdviceMode(state: StateVector): AdviceMode {
 | 의료 응급 | "가슴 통증", "호흡 곤란", "의식 손실" | 119/911 안내, 의료 면책 문구 |
 | 폭력/학대 | "누군가가 나를 때린다" | 상담소/핫라인 연결 |
 | 의료 단정 | "~병이다", "~약을 드세요" | LLM 출력 후처리 필터 차단 |
+
+#### 1단계 위기 자원 표 (한국)
+
+> 사용자가 위기 신호를 보이면 점술 응답을 중단하고 아래 번호/기관 중 적절한 곳으로 연결 안내한다. 2단계에서 ISO 국가코드 기반 표로 확장한다.
+
+| 국가 | 위기 유형 | 번호 | 기관/설명 |
+|------|-----------|------|-----------|
+| 한국 | 자살/정서 위기 | **1393** | 보걵복지부 자살예방상담전화 (24시간) |
+| 한국 | 정신건강 위기 | **1577-0199** | 정신건강위기상담전화 (24시간) |
+| 한국 | 응급 의료 | **119** | 소방당국 (음성·영상통화 가능) |
+| 한국 | 가정폭력·성폭력·학대 | **1366** | 여성가족부 통합지원센터 (24시간) |
+| 한국 | 청소년 상담 | **1388** | 청소년상담센터 (24시간) |
+| 한국 | 일반 복지/생활 상담 | **129** | 보걵복지상담센터 |
+| 한국 | 범죄/신고 | **112** | 경찰청 |
 
 ### 9.4 출력 후처리 가드
 
@@ -761,7 +777,7 @@ function safetyGuard(text: string): { safe: boolean; text: string; reason?: stri
 
 ## 12. 참고 문헌 및 데이터 출처
 
-- Buysse, D. J., et al. (1989). The Pittsburgh Sleep Quality Index. *Sleep Research*.
+- Buysse, D. J., Reynolds, C. F., Monk, T. H., Berman, S. R., & Kupfer, D. J. (1989). The Pittsburgh Sleep Quality Index. *Psychiatry Research*, 28(2), 193-213.
 - Spitzer, R. L., et al. (2006). A brief measure for assessing generalized anxiety disorder. *Annals of Internal Medicine*.
 - Kroenke, K., et al. (2001). The PHQ-9. *Journal of General Internal Medicine*.
 - Topp, C. W., et al. (2015). The WHO-5 Well-Being Index. *Psychotherapy and Psychosomatics*.
