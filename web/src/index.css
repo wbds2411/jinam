@@ -22,3 +22,18 @@
     }
   }
 }
+
+/* 야간 진정 테마: 다크 기반 + 따뜻한 저채도 톤 */
+.theme-night body {
+  background-color: #1a1626;
+  color: #d8d2e8;
+}
+
+/* 모션 감소 설정 켜짐 시 전역 애니메이션/전환 제거 */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}

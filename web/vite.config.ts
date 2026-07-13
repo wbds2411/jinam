@@ -17,12 +17,24 @@ export default defineConfig({
         lang: 'ko',
         start_url: '/',
         icons: [
-          { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/compass.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
         ],
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('@jinam/engine') || id.includes('/engine/')) return 'engine';
+          if (id.includes('react-router') || id.includes('/react/') || id.includes('/react-dom/')) return 'react-vendor';
+          if (id.includes('lucide-react')) return 'icons';
+          if (id.includes('astronomia') || id.includes('kor-lunar')) return 'calendar-vendor';
+          return undefined;
+        },
+      },
+    },
+  },
   server: {
     port: 3000,
   },

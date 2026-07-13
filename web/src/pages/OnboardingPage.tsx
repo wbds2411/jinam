@@ -7,16 +7,33 @@ import { Card } from '../components/Card.js';
 import { SajuBoard } from '../components/SajuBoard.js';
 import { computeSajuFromProfile } from '../services/engineService.js';
 
-const STEPS = ['기본 정보', '울명학 정보', '선택 정보', '확인'];
+const STEPS = ['기본 정보', '운명학 정보', '선택 정보', '확인'];
+
+const BIRTH_LOCATIONS = [
+  { name: '서울', lat: 37.5665, lng: 126.9780, timeZoneOffsetMinutes: 540 },
+  { name: '부산', lat: 35.1796, lng: 129.0756, timeZoneOffsetMinutes: 540 },
+  { name: '대구', lat: 35.8714, lng: 128.6014, timeZoneOffsetMinutes: 540 },
+  { name: '인천', lat: 37.4563, lng: 126.7052, timeZoneOffsetMinutes: 540 },
+  { name: '광주', lat: 35.1595, lng: 126.8526, timeZoneOffsetMinutes: 540 },
+  { name: '대전', lat: 36.3504, lng: 127.3845, timeZoneOffsetMinutes: 540 },
+  { name: '울산', lat: 35.5384, lng: 129.3114, timeZoneOffsetMinutes: 540 },
+  { name: '제주', lat: 33.4996, lng: 126.5312, timeZoneOffsetMinutes: 540 },
+];
 
 export default function OnboardingPage() {
   const navigate = useNavigate();
   const { profile, setProfile, completeOnboarding } = useUserStore();
   const [step, setStep] = useState(0);
+  const [legalAccepted, setLegalAccepted] = useState(false);
 
   const saju = computeSajuFromProfile(profile);
 
   function handleComplete() {
+    if (!legalAccepted) return;
+    useUserStore.getState().setSettings({
+      legalAcceptedAt: new Date().toISOString(),
+      legalVersion: '1.0',
+    });
     completeOnboarding();
     navigate('/');
   }
@@ -25,7 +42,7 @@ export default function OnboardingPage() {
     <div className="mx-auto min-h-screen max-w-md bg-paper p-4 dark:bg-ink">
       <header className="mb-6">
         <h1 className="font-display text-2xl font-bold">결정의 나침반</h1>
-        <p className="text-sm text-gray-600 dark:text-gray-400">더 정확한 근거를 위해 울명학 정보를 받아요. 건 너뛰기 가능합니다.</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">더 정확한 근거를 위해 운명학 정보를 받아요. 건너뛰기 가능합니다.</p>
       </header>
 
       <div className="mb-4 flex gap-2 text-sm">
@@ -117,11 +134,32 @@ export default function OnboardingPage() {
               <label htmlFor="leap" className="text-sm">윤달</label>
             </div>
           )}
-          <Input
-            label="출생 지역 (예: 대구)"
-            value={profile.birthLocation?.name ?? ''}
-            onChange={(e) => setProfile({ birthLocation: { lat: 35.87, lng: 128.6, name: e.target.value } })}
-          />
+          <div className="flex flex-col gap-1">
+            <label htmlFor="birth-location" className="text-sm font-medium">출생 지역</label>
+            <select
+              id="birth-location"
+              value={profile.birthLocation?.name ?? ''}
+              onChange={(event) => {
+                const location = BIRTH_LOCATIONS.find(item => item.name === event.target.value) ?? null;
+                setProfile({ birthLocation: location });
+              }}
+              className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-800"
+            >
+              <option value="">미선택</option>
+              {BIRTH_LOCATIONS.map(location => <option key={location.name} value={location.name}>{location.name}</option>)}
+            </select>
+          </div>
+          <label className="flex items-start gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={profile.useTrueSolarTime}
+              disabled={!profile.birthLocation}
+              onChange={(event) => setProfile({ useTrueSolarTime: event.target.checked })}
+              className="mt-0.5 h-4 w-4"
+            />
+            <span>선택한 도시의 경도로 출생 시각을 보정합니다.</span>
+          </label>
+          <p className="text-xs text-gray-500">경도 기준 보정이며 균시차는 포함하지 않습니다. 지역을 선택하지 않으면 보정하지 않아요.</p>
         </Card>
       )}
 
@@ -159,6 +197,18 @@ export default function OnboardingPage() {
           <div className="rounded-lg bg-gray-50 p-3 text-xs text-gray-600 dark:bg-gray-900 dark:text-gray-400">
             이 해석은 "자기이해 언어"이며 미래를 단정하지 않습니다. 모든 분석은 "오늘의 한 걸음"으로 끝납니다.
           </div>
+          <label className="flex items-start gap-2 rounded-lg border border-gray-300 p-3 text-sm dark:border-gray-700">
+            <input
+              type="checkbox"
+              checked={legalAccepted}
+              onChange={(event) => setLegalAccepted(event.target.checked)}
+              className="mt-0.5 h-4 w-4"
+            />
+            <span>만 14세 이상이거나 보호자 동의를 받았으며, 개인정보 처리방침과 이용약관에 동의합니다.</span>
+          </label>
+          <button type="button" onClick={() => navigate('/legal')} className="text-left text-xs text-fire underline">
+            개인정보 처리방침 및 이용약관 보기
+          </button>
         </Card>
       )}
 
@@ -169,7 +219,7 @@ export default function OnboardingPage() {
         {step < STEPS.length - 1 ? (
           <Button onClick={() => setStep(step + 1)}>다음</Button>
         ) : (
-          <Button onClick={handleComplete}>시작하기</Button>
+          <Button onClick={handleComplete} disabled={!legalAccepted}>시작하기</Button>
         )}
       </div>
     </div>

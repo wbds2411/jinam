@@ -20,17 +20,40 @@ describe('시간/지역 경계 테스트', () => {
     expect(p2.branch).toBe('子');
   });
 
-  it('대구 진태양시 보정: 01:45 KST → 약 02:11', () => {
+  it('대구 진태양시 경도 보정: 01:45 KST → 약 01:19', () => {
     const t = applyTrueSolarTime(1, 45, 128.6014, 540);
-    expect(t.hour).toBe(2);
-    expect(t.minute).toBe(11);
+    expect(t.hour).toBe(1);
+    expect(t.minute).toBe(19);
     expect(t.adjusted).toBe(true);
   });
 
-  it('서울(약 127도) 진태양시 보정: 01:45 KST → 약 02:17', () => {
+  it('서울(약 127도) 진태양시 경도 보정: 01:45 KST → 약 01:13', () => {
     const t = applyTrueSolarTime(1, 45, 127.0, 540);
-    expect(t.hour).toBe(2);
-    expect(t.minute).toBe(17);
+    expect(t.hour).toBe(1);
+    expect(t.minute).toBe(13);
+  });
+
+  it('자정 이전으로 넘어가는 보정도 24시간 범위로 정규화한다', () => {
+    const t = applyTrueSolarTime(0, 10, 127.0, 540);
+    expect(t.hour).toBe(23);
+    expect(t.minute).toBe(38);
+  });
+  it('날짜 경계 정책에 따라 일주 적용 여부를 선택한다', () => {
+    const base = {
+      solarDate: new Date(2026, 0, 2),
+      birthTime: { hour: 0, minute: 10 },
+      gender: 'male' as const,
+      location: { lat: 37.5665, lng: 126.978, name: '서울' },
+      timeZoneOffsetMinutes: 540,
+      useTrueSolarTime: true,
+    };
+    const civil = computeSaju({ ...base, trueSolarDateBoundary: 'civil' });
+    const adjusted = computeSaju({ ...base, trueSolarDateBoundary: 'adjusted' });
+
+    expect(civil.raw.trueSolarTime).toBe('23:38');
+    expect(civil.raw.notes).toContain('일주는 출생지 민간시 날짜 유지');
+    expect(adjusted.raw.notes).toContain('일주에 진태양시 보정 날짜 적용');
+    expect(civil.day).not.toEqual(adjusted.day);
   });
 });
 

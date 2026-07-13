@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "calendar": "proleptic Gregorian local civil date",
+    "monthBoundary": "solar terms",
+    "trueSolarCorrection": "longitude-only; equation of time excluded",
+    "trueSolarDateBoundary": "civil"
+  },
+  "cases": [
+    {
+      "id": "golden-daegu-1980",
+      "source": "kor-lunar 1.6.1 iljin/secha plus project solar-term policy",
+      "independentExternalVerified": false,
+      "verifiedAt": "2026-07-13",
+      "input": { "date": "1980-03-19", "time": "01:45", "gender": "male", "longitude": 128.6014 },
+      "expected": { "year": "庚申", "month": "己卯", "day": "辛卯", "hour": "己丑", "trueSolarTime": "01:19" }
+    },
+    {
+      "id": "lichun-before-2024",
+      "source": "kor-lunar 1.6.1 iljin/secha plus project solar-term policy",
+      "independentExternalVerified": false,
+      "verifiedAt": "2026-07-13",
+      "input": { "date": "2024-02-03", "time": "12:00", "gender": "female", "longitude": 126.978 },
+      "expected": { "year": "癸卯", "month": "乙丑", "day": "丁酉", "hour": "丙午", "trueSolarTime": "11:28" }
+    },
+    {
+      "id": "lichun-after-2024",
+      "source": "kor-lunar 1.6.1 iljin/secha plus project solar-term policy",
+      "independentExternalVerified": false,
+      "verifiedAt": "2026-07-13",
+      "input": { "date": "2024-02-05", "time": "12:00", "gender": "female", "longitude": 126.978 },
+      "expected": { "year": "癸卯", "month": "甲寅", "day": "己亥", "hour": "庚午", "trueSolarTime": "11:28" }
+    },
+    {
+      "id": "midnight-seoul-civil-policy",
+      "source": "kor-lunar 1.6.1 iljin/secha plus project solar-term policy",
+      "independentExternalVerified": false,
+      "verifiedAt": "2026-07-13",
+      "input": { "date": "2026-01-02", "time": "00:10", "gender": "male", "longitude": 126.978 },
+      "expected": { "year": "乙巳", "month": "戊子", "day": "丙子", "hour": "戊子", "trueSolarTime": "23:38" }
+    }
+  ]
+}

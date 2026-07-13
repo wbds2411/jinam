@@ -15,28 +15,38 @@ export function clearMasterKey() {
   masterKey = null;
 }
 
+function isEncryptedPayload(value: unknown): value is { iv: string; salt: string; ciphertext: string } {
+  if (!value || typeof value !== 'object') return false;
+  const payload = value as Record<string, unknown>;
+  return ['iv', 'salt', 'ciphertext'].every(key => typeof payload[key] === 'string');
+}
+
 export const secureStorage: StateStorage = {
   getItem: async (name) => {
     const item = localStorage.getItem(name);
-    if (!item) return null;
-    if (!masterKey) {
-      // 복호화 불가: 아직 PIN 입력 전. null 반환하여 기본값 사용.
+    if (!item || !masterKey) return null;
+
+    let payload: unknown;
+    try {
+      payload = JSON.parse(item);
+    } catch {
+      localStorage.removeItem(name);
       return null;
     }
+    if (!isEncryptedPayload(payload)) {
+      localStorage.removeItem(name);
+      return null;
+    }
+
     try {
-      const payload = JSON.parse(item);
       return await decrypt(payload, masterKey);
     } catch {
-      // 복호화 실패 시 평문으로 시도 (마이그레이션용)
-      return item;
+      return null;
     }
   },
   setItem: async (name, value) => {
     if (!masterKey) {
-      // PIN이 없으면 평문 저장 (개발/초기). 단, 경고.
-      console.warn('[보안] 마스터 키 없이 평문 저장됨');
-      localStorage.setItem(name, value);
-      return;
+      throw new Error(`Secure storage is locked: ${name}`);
     }
     const payload = await encrypt(value, masterKey);
     localStorage.setItem(name, JSON.stringify(payload));

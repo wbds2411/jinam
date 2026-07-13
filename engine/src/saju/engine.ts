@@ -55,17 +55,18 @@ export function applyTrueSolarTime(
   minute: number,
   longitude?: number,
   timeZoneOffsetMinutes = 540
-): { hour: number; minute: number; adjusted: boolean } {
-  if (longitude === undefined) return { hour, minute, adjusted: false };
+): { hour: number; minute: number; dayOffset: number; adjusted: boolean } {
+  if (longitude === undefined) return { hour, minute, dayOffset: 0, adjusted: false };
 
   const standardLongitude = timeZoneOffsetMinutes / 60 * 15; // UTC+9 → 135
   const diffMinutes = (longitude - standardLongitude) * MINUTES_PER_DEGREE;
-  const totalMinutes = hour * 60 + minute - Math.round(diffMinutes);
-  const adjustedHour = Math.floor(totalMinutes / 60) % 24;
-  const adjustedMinute = totalMinutes % 60;
+  const totalMinutes = hour * 60 + minute + Math.round(diffMinutes);
+  const normalizedMinutes = ((totalMinutes % 1440) + 1440) % 1440;
+  const dayOffset = Math.floor(totalMinutes / 1440);
   return {
-    hour: adjustedHour < 0 ? adjustedHour + 24 : adjustedHour,
-    minute: adjustedMinute,
+    hour: Math.floor(normalizedMinutes / 60),
+    minute: normalizedMinutes % 60,
+    dayOffset,
     adjusted: diffMinutes !== 0,
   };
 }
@@ -201,14 +202,17 @@ export function calculateDaeun(
 }
 
 export function computeSaju(input: BirthInput): SajuChart {
-  const { solarDate, birthTime, gender, location, useTrueSolarTime, zishiBoundary } = input;
+  const {
+    solarDate, birthTime, gender, location, useTrueSolarTime, zishiBoundary,
+    trueSolarDateBoundary = 'civil',
+  } = input;
 
   const notes: string[] = [];
   const lunar = toLunar(solarDate.getFullYear(), solarDate.getMonth() + 1, solarDate.getDate());
 
   const year = getYearPillar(solarDate);
   const month = getMonthPillar(solarDate, year.stem);
-  const day = getDayPillar(solarDate);
+  let day = getDayPillar(solarDate);
 
   let hour: Pillar | undefined;
   let trueTimeStr: string | undefined;
@@ -223,6 +227,17 @@ export function computeSaju(input: BirthInput): SajuChart {
         m = adjusted.minute;
         trueTimeStr = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
         notes.push(`진태양시 보정 적용: ${trueTimeStr}`);
+        if (adjusted.dayOffset !== 0) {
+          notes.push(`진태양시 날짜 이동: ${adjusted.dayOffset > 0 ? '다음 날' : '이전 날'}`);
+          if (trueSolarDateBoundary === 'adjusted') {
+            const adjustedDate = new Date(solarDate);
+            adjustedDate.setDate(adjustedDate.getDate() + adjusted.dayOffset);
+            day = getDayPillar(adjustedDate);
+            notes.push('일주에 진태양시 보정 날짜 적용');
+          } else {
+            notes.push('일주는 출생지 민간시 날짜 유지');
+          }
+        }
       }
     }
 

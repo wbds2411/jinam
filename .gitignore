@@ -6,6 +6,9 @@ jspm_packages/
 dist/
 build/
 test-results/
+coverage/
+playwright-report/
+artifacts/
 
 # Debug logs
 npm-debug.log*

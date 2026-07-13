@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateCounselorResponse, classifyState, detectCrisis, applySafetyGuard } from '../counselor.js';
+import { generateCounselorResponse, classifyState, detectCrisis, getCrisisResources, applySafetyGuard } from '../counselor.js';
 import type { LLMProvider, LLMResponse, LLMUsage } from '../../llm/types.js';
 import type { UserContext } from '../types.js';
 
@@ -24,6 +24,7 @@ const baseContext: UserContext = {
   activeTools: ['saju', 'psych'],
   toolWeights: { saju: 60, psych: 40 },
   privacyMode: true,
+  crisisRegion: 'KR',
 };
 
 describe('위기 감지 및 안전', () => {
@@ -47,6 +48,32 @@ describe('위기 감지 및 안전', () => {
     expect(detectCrisis('손목을 베고 싶어').crisis).toBe(true);
     expect(detectCrisis('모두 죽여버릴까').crisis).toBe(true);
     expect(detectCrisis('오늘 날씨 좋다').crisis).toBe(false);
+  });
+
+  it('단순한 현재 부정문은 위기로 오탐하지 않는다', () => {
+    expect(detectCrisis('죽고 싶지 않아').crisis).toBe(false);
+    expect(detectCrisis('자살할 생각은 없어').crisis).toBe(false);
+    expect(detectCrisis('죽고 싶지 않은데 자꾸 그런 생각이 나').crisis).toBe(true);
+  });
+
+  it('완곡한 자살 사고 표현을 감지한다', () => {
+    expect(detectCrisis('그냥 사라지고 싶어').crisis).toBe(true);
+    expect(detectCrisis('내일은 깨어나지 않았으면 좋겠어').crisis).toBe(true);
+    expect(detectCrisis('이제 살 이유가 없어').crisis).toBe(true);
+  });
+
+  it('국가별 위기 지원 자원을 제공하고 상담 응답의 mode를 crisis로 고정한다', async () => {
+    expect(getCrisisResources('US')[0].number).toBe('988');
+    expect(getCrisisResources('GB')[0].number).toBe('116 123');
+    expect(getCrisisResources('XX')[0].number).toBe('현지 응급번호');
+
+    const result = await generateCounselorResponse({
+      userMessage: '죽고 싶어',
+      context: { ...baseContext, crisisRegion: 'US' },
+      llm: createMockLLM('호출되면 안 됨'),
+    });
+    expect(result.mode).toBe('crisis');
+    expect(result.text).toContain('988');
   });
 });
 

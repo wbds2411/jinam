@@ -13,6 +13,7 @@
   },
   "scripts": {
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "build": "tsc",
     "typecheck": "tsc --noEmit"
   },

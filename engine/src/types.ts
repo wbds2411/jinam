@@ -20,6 +20,7 @@ export interface BirthInput {
   location?: { lat: number; lng: number; name: string };
   timeZoneOffsetMinutes?: number; // UTC+9 = 540
   useTrueSolarTime?: boolean;
+  trueSolarDateBoundary?: 'civil' | 'adjusted';
   zishiBoundary?: 'standard' | 'early'; // 'early': 23:30~00:30 자시 처리
 }
 

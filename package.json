@@ -10,11 +10,16 @@
   ],
   "scripts": {
     "test": "npm run test --workspace=engine --workspace=web",
+    "test:coverage": "npm run test:coverage --workspace=engine --workspace=web",
     "build": "npm run build --workspace=engine --workspace=web",
     "typecheck": "npm run typecheck --workspace=engine --workspace=web",
-    "dev": "npm run dev --workspace=web"
+    "dev": "npm run dev --workspace=web",
+    "test:e2e": "npm run test:e2e --workspace=web"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^1.6.1"
+  }
 }

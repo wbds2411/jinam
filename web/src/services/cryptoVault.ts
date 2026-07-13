@@ -1,6 +1,8 @@
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
+export const VAULT_KDF_ITERATIONS = 100_000;
+
 function bufferToBase64(buffer: Uint8Array | ArrayBuffer): string {
   const bytes = buffer instanceof ArrayBuffer ? new Uint8Array(buffer) : buffer;
   let binary = '';
@@ -28,7 +30,7 @@ async function deriveKey(password: string, salt: Uint8Array): Promise<CryptoKey>
     ['deriveKey']
   );
   return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt: salt as BufferSource, iterations: 100_000, hash: 'SHA-256' },
+    { name: 'PBKDF2', salt: salt as BufferSource, iterations: VAULT_KDF_ITERATIONS, hash: 'SHA-256' },
     keyMaterial,
     { name: 'AES-GCM', length: 256 },
     false,

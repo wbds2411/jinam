@@ -12,6 +12,8 @@ export function computeSajuFromProfile(profile: {
   gender: 'male' | 'female' | '';
   calendarType: 'solar' | 'lunar';
   isLeapMonth: boolean;
+  birthLocation: { lat: number; lng: number; name: string; timeZoneOffsetMinutes?: number } | null;
+  useTrueSolarTime?: boolean;
 }) {
   if (!profile.birthDate || !profile.gender) return null;
 
@@ -35,6 +37,11 @@ export function computeSajuFromProfile(profile: {
     solarDate,
     birthTime: birthTimeInput as BirthInput['birthTime'],
     gender: profile.gender as 'male' | 'female',
+    location: profile.birthLocation ?? undefined,
+    timeZoneOffsetMinutes: profile.birthLocation?.timeZoneOffsetMinutes ?? 540,
+    useTrueSolarTime: Boolean(profile.birthLocation && profile.useTrueSolarTime),
+    zishiBoundary: 'standard',
+    trueSolarDateBoundary: 'civil',
   };
 
   return saju.computeSaju(input);
