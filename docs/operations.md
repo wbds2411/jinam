@@ -11,6 +11,16 @@
 7. `npx cap sync android` 후 서명된 Android 빌드와 실기기 smoke
 8. 개인정보·약관·오픈소스 고지 버전 확인
 
+## Tailscale 및 LAN 접속
+
+개발 서버와 미리보기 서버는 `0.0.0.0`에 바인딩해 PC의 LAN/Tailscale 인터페이스에서 접근할 수 있게 한다.
+
+- 개발: `npm run dev` → `http://<PC의 Tailscale IP>:3000`
+- 프로덕션 미리보기: `npm run build && npm run preview --workspace=web` → `http://<PC의 Tailscale IP>:4173`
+- Docker: `docker compose -f deploy/docker-compose.private.yml up -d --build` → `http://<PC의 Tailscale IP>:8080`
+
+Tailscale IP는 `tailscale ip -4`로 확인한다. `127.0.0.1`은 접속하는 각 기기 자신을 가리키므로 휴대폰이나 다른 PC에서 사용할 수 없다. 앱은 SPA 루트(`/`)로 접속하며 `/admin`을 붙이지 않는다. 외부 장치에서 timeout이면 서버가 `0.0.0.0`에 LISTEN 중인지 확인한 뒤 Windows 방화벽에서 해당 TCP 포트를 Private 네트워크 또는 Tailscale 인터페이스에만 허용한다. 인터넷 전체에 포트를 공개하지 않는다.
+
 ## 비밀정보
 
 - API 키, 서명 키, PIN, 사용자 데이터는 저장소·로그·CI artifact에 넣지 않습니다.
