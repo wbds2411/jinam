@@ -22,6 +22,16 @@
 | 테스트 | Vitest (단위), jsdom (컴포넌트) |
 | 배포 | Docker Compose + Caddy |
 
+## 프로젝트 문서
+
+| 문서 | 설명 |
+|---|---|
+| [현재 진행 현황](docs/project-status-2026-07-14.md) | 완료된 기능, 점검 결과, 출시 전 할 일을 알기 쉽게 정리한 문서 |
+| [요구사항](docs/requirements.md) | 확정된 요구사항과 아직 결정할 사항 |
+| [시스템 구조](docs/architecture.md) | 목표 아키텍처와 기술 구성 |
+| [운영 안내](docs/operations.md) | 배포 및 운영 절차 |
+| [위험 관리](docs/risk-register.md) | 주요 위험과 대응 계획 |
+
 ## 빠른 시작
 
 ```bash
