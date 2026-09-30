@@ -5,7 +5,7 @@ import { setMasterKey, clearMasterKey } from '../services/secureStorage.js';
 interface AuthState {
   pinHash: string | null;
   authenticated: boolean;
-  setPin: (pin: string) => void;
+  setPin: (pin: string) => Promise<void>;
   authenticate: (pin: string) => Promise<boolean>;
   lock: () => void;
 }

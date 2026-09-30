@@ -56,7 +56,7 @@ const defaultSettings: UserSettings = {
   moduleWeights: { saju: 40, psych: 25, astro: 10, bigfive: 15, attachment: 10 },
   privacyMode: true,
   preferredLLM: 'ollama',
-  theme: 'light',
+  theme: typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
   reducedMotion: false,
   crisisRegion: 'KR',
   onboardingDone: false,
@@ -89,6 +89,7 @@ export const useUserStore = create<UserState>()(
       },
     }),
     {
+      skipHydration: true,
       name: 'jinam-user',
       storage: createJSONStorage(() => secureStorage),
       partialize: (state) => ({ profile: state.profile, settings: state.settings } as UserState),

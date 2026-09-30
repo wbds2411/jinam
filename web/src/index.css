@@ -3,22 +3,53 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply antialiased;
+  :root {
+    color-scheme: light;
+    --nd-canvas: #f8fafc;
+    --nd-surface: #ffffff;
+    --nd-text: #0f172a;
+    --nd-muted: #475569;
+    --nd-primary: #047857;
+    --nd-on-primary: #ffffff;
+    --nd-link: #0369a1;
+    --nd-success: #047857;
+    --nd-warning: #92400e;
+    --nd-danger: #be123c;
+    --nd-control-border: #64748b;
+    --nd-border: #e2e8f0;
+    --nd-focus: #0369a1;
   }
-  body {
-    @apply bg-paper text-ink dark:bg-ink dark:text-paper;
+  :root.dark {
+    color-scheme: dark;
+    --nd-canvas: #0f172a;
+    --nd-surface: #1e293b;
+    --nd-text: #f1f5f9;
+    --nd-muted: #cbd5e1;
+    --nd-primary: #6ee7b7;
+    --nd-on-primary: #0f172a;
+    --nd-link: #7dd3fc;
+    --nd-success: #6ee7b7;
+    --nd-warning: #fcd34d;
+    --nd-danger: #fda4af;
+    --nd-control-border: #94a3b8;
+    --nd-border: #334155;
+    --nd-focus: #7dd3fc;
   }
-  :focus-visible {
-    @apply outline-2 outline-offset-2 outline-fire;
-  }
+  html { @apply antialiased; }
+  body { @apply bg-canvas text-content; line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere; }
+  :focus-visible { outline: 3px solid var(--nd-focus); outline-offset: 3px; }
+  input, select, textarea { font: inherit; accent-color: var(--nd-primary); }
+  input::placeholder, textarea::placeholder { color: var(--nd-muted); opacity: 1; }
+  a { color: var(--nd-link); text-decoration: underline; }
+  button, input, select, textarea { scroll-margin-block: 1rem; }
 }
-
-@layer utilities {
-  .motion-safe {
-    @media (prefers-reduced-motion: reduce) {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
+@layer components {
+  .field { @apply min-h-11 min-w-0 max-w-full rounded-lg border border-control bg-surface px-3 py-2 text-content; }
+  .page { @apply mx-auto min-h-screen w-full max-w-2xl p-4 sm:p-6; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+[data-reduced-motion="true"] *, [data-reduced-motion="true"] *::before, [data-reduced-motion="true"] *::after {
+  animation: none !important; transition: none !important; scroll-behavior: auto !important;
 }

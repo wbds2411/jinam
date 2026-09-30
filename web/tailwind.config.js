@@ -5,6 +5,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        canvas: 'var(--nd-canvas)',
+        surface: 'var(--nd-surface)',
+        content: 'var(--nd-text)',
+        muted: 'var(--nd-muted)',
+        primary: 'var(--nd-primary)',
+        'on-primary': 'var(--nd-on-primary)',
+        link: 'var(--nd-link)',
+        success: 'var(--nd-success)',
+        warning: 'var(--nd-warning)',
+        danger: 'var(--nd-danger)',
+        control: 'var(--nd-control-border)',
+        line: 'var(--nd-border)',
         // 오방색 (정보 시각화용)
         wood: { DEFAULT: '#4ade80', dark: '#166534' },    // 청록/녹색 (목)
         fire: { DEFAULT: '#f87171', dark: '#991b1b' },     // 적색 (화)

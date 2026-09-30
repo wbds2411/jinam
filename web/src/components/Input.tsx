@@ -1,20 +1,17 @@
-import type { InputHTMLAttributes } from 'react';
-
+import { useId, type InputHTMLAttributes } from 'react';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  hint?: string;
+  error?: string;
 }
-
-export function Input({ label, className = '', id, ...props }: InputProps) {
-  return (
-    <div className={`flex flex-col gap-1 ${className}`}>
-      <label htmlFor={id} className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        {label}
-      </label>
-      <input
-        id={id}
-        className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-ink focus:border-fire focus:outline-none focus:ring-1 focus:ring-fire dark:border-gray-600 dark:bg-gray-800 dark:text-paper"
-        {...props}
-      />
-    </div>
-  );
+export function Input({ label, hint, error, className = '', id, ...props }: InputProps) {
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const describedBy = [props['aria-describedby'], hint && `${inputId}-hint`, error && `${inputId}-error`].filter(Boolean).join(' ') || undefined;
+  return <div className={`flex min-w-0 flex-col gap-1 ${className}`}>
+    <label htmlFor={inputId} className="text-sm font-medium">{label}</label>
+    {hint && <p id={`${inputId}-hint`} className="text-sm text-muted">{hint}</p>}
+    <input {...props} id={inputId} aria-describedby={describedBy} aria-invalid={error ? true : props['aria-invalid']} className="field w-full" />
+    {error && <p id={`${inputId}-error`} role="alert" className="text-sm text-danger">{error}</p>}
+  </div>;
 }

@@ -31,6 +31,7 @@ export const useChatStore = create<ChatState>()(
       clearMessages: () => set({ messages: [] }),
     }),
     {
+      skipHydration: true,
       name: 'jinam-chat',
       storage: createJSONStorage(() => secureStorage),
       partialize: (state) => ({ messages: state.messages } as ChatState),

@@ -1,20 +1,14 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
 }
-
-export function Button({ children, variant = 'primary', className = '', ...props }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fire disabled:opacity-50';
+export function Button({ children, variant = 'primary', className = '', type = 'button', ...props }: ButtonProps) {
   const styles = {
-    primary: 'bg-ink text-paper hover:bg-gray-700 dark:bg-paper dark:text-ink dark:hover:bg-gray-200',
-    secondary: 'bg-gray-200 text-ink hover:bg-gray-300 dark:bg-gray-700 dark:text-paper',
-    ghost: 'text-ink hover:bg-gray-100 dark:text-paper dark:hover:bg-gray-800',
+    primary: 'border-transparent bg-primary text-on-primary',
+    secondary: 'border-control bg-surface text-content',
+    ghost: 'border-transparent text-content',
+    danger: 'border-danger bg-surface text-danger',
   };
-  return (
-    <button className={`${base} ${styles[variant]} ${className}`} {...props}>
-      {children}
-    </button>
-  );
+  return <button type={type} className={`inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-xl border px-4 py-2 font-medium transition-colors duration-150 enabled:hover:underline disabled:cursor-not-allowed disabled:opacity-60 ${styles[variant]} ${className}`} {...props}>{children}</button>;
 }
