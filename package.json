@@ -12,7 +12,9 @@
     "test": "npm run test --workspace=engine --workspace=web",
     "build": "npm run build --workspace=engine --workspace=web",
     "typecheck": "npm run typecheck --workspace=engine --workspace=web",
-    "dev": "npm run dev --workspace=web"
+    "dev": "npm run dev --workspace=web",
+    "dev:server": "server/.venv/bin/python server/app.py",
+    "test:server": "server/.venv/bin/python -m unittest discover -s server -p \"test_*.py\""
   },
   "keywords": [],
   "author": "",

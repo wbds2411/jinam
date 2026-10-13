@@ -5,6 +5,8 @@ import { useChatStore } from '../stores/chatStore.js';
 import { deleteStoredData } from '../services/secureStorage.js';
 import { Button } from '../components/Button.js';
 import { Card } from '../components/Card.js';
+import { AIConnections } from '../components/AIConnections.js';
+import { LifeSettings } from '../components/LifeSettings.js';
 import { Input } from '../components/Input.js';
 
 const ALL_MODULES = [
@@ -59,6 +61,7 @@ export default function SettingsPage() {
     {notice && <p role="status" className="mb-4 text-success">{notice}</p>}
     <fieldset disabled={deleting} className="min-w-0 space-y-4">
       <legend className="sr-only">개인 설정</legend>
+      <AIConnections />
       <Card>
         <h2 className="mb-3 text-lg font-semibold">화면과 움직임</h2>
         <div role="group" aria-label="화면 테마" className="flex flex-wrap gap-2">
@@ -90,13 +93,7 @@ export default function SettingsPage() {
           })}</div>
         </details>
       </Card>
-      <Card>
-        <h2 className="mb-2 text-lg font-semibold">AI 연결 선호</h2>
-        <p id="ai-note" className="mb-3 text-sm text-muted">AI 연결은 준비 중이에요. 지금은 어떤 옵션을 선택해도 외부 AI로 내용을 전송하지 않아요.</p>
-        <label className="flex min-h-11 items-center justify-between gap-4"><span>로컬 처리 우선</span><input type="checkbox" className="h-5 w-5" checked={settings.privacyMode} onChange={e => setSettings({ privacyMode: e.target.checked })} /></label>
-        <label htmlFor="llm-route" className="mb-1 block text-sm">연결 방식 선호</label>
-        <select id="llm-route" aria-describedby="ai-note" value={settings.preferredLLM} onChange={e => setSettings({ preferredLLM: e.target.value })} className="field w-full"><option value="ollama">로컬 (Ollama)</option><option value="openai-user">OpenAI (사용자 키)</option><option value="anthropic-user">Claude (사용자 키)</option></select>
-      </Card>
+      <LifeSettings />
     </fieldset>
   </main>;
 }

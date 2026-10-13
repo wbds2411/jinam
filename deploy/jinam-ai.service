@@ -1,0 +1,15 @@
+[Unit]
+Description=Jinam private AI gateway
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/w/dev/jinam
+ExecStart=%h/w/dev/jinam/server/.venv/bin/python %h/w/dev/jinam/server/app.py
+Environment=PATH=%h/.local/bin:%h/.local/share/mise/shims:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+RestartSec=3
+UMask=0077
+
+[Install]
+WantedBy=default.target

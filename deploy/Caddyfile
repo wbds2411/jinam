@@ -1,6 +1,11 @@
 :80 {
-  root * /usr/share/caddy
-  file_server
-  try_files {path} /index.html
   encode gzip
+  handle /api/* {
+    reverse_proxy ai:8787
+  }
+  handle {
+    root * /usr/share/caddy
+    try_files {path} /index.html
+    file_server
+  }
 }

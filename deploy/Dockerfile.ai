@@ -1,0 +1,9 @@
+# syntax=docker/dockerfile:1
+FROM python:3.14-slim
+WORKDIR /app
+COPY --from=commons python /opt/vibe-commons/python
+RUN pip install --no-cache-dir /opt/vibe-commons/python
+COPY server/app.py /app/app.py
+ENV VIBE_COMMONS=/opt/vibe-commons JINAM_BIND=0.0.0.0 JINAM_ALLOW_CLI=0 JINAM_AI_DATA=/data
+EXPOSE 8787
+CMD ["python", "/app/app.py"]

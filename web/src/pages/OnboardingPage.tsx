@@ -30,7 +30,7 @@ export default function OnboardingPage() {
     <main className="page">
       <header className="mb-6">
         <h1 className="font-display text-2xl font-bold">결정의 나침반</h1>
-        <p className="text-sm text-muted">별칭과 출생 정보는 모두 선택 사항이에요. 출생 정보는 사주 미리보기에만 사용하며, 입력 없이도 기록을 시작할 수 있어요.</p>
+        <p className="text-sm text-muted">별칭과 출생 정보는 모두 선택 사항이에요. 출생 정보는 사주 계산에 사용하며, AI 해석을 요청하면 계산값이 선택한 모델에 전송돼요. 입력 없이도 기록을 시작할 수 있어요.</p>
       </header>
 
       <p className="mb-2 font-medium" role="status">{step + 1} / {STEPS.length}단계 · {STEPS[step]}</p>

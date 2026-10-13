@@ -2,8 +2,31 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { secureStorage } from '../services/secureStorage.js';
 
+export interface FamilyMember {
+  id: string;
+  name: string;
+  relation: string;
+  birthDate: string;
+  birthTime: string;
+  birthTimeUnknown: boolean;
+  gender: 'male' | 'female' | '';
+  calendarType: 'solar' | 'lunar';
+  isLeapMonth: boolean;
+  context: string;
+}
+export interface SpaceContext {
+  id: string;
+  kind: 'home' | 'office';
+  name: string;
+  entranceDirection: string;
+  deskDirection: string;
+  description: string;
+}
 export interface UserProfile {
+  familyMembers?: FamilyMember[];
+  spaces?: SpaceContext[];
   nickname: string;
+  lifeContext?: string; // 가족·집·사무실의 선택적 생활 맥락
   gender: 'male' | 'female' | '';
   birthDate: string; // YYYY-MM-DD
   birthTime: string; // HH:MM or ''
